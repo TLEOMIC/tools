@@ -1,0 +1,3 @@
+使用前需要下载支付宝那堆东西
+然后修改你的RSAPRIVATEKEY 和 ALIPAYRSAPUBLICKEY
+公钥是支付宝公钥

@@ -1,0 +1,61 @@
+<style type="text/css">
+                    .CountDown{
+                        border-right:1px solid #000000;
+                        display:inline-block;
+                        width: 12.5%;
+                        text-align: center;
+                        background: linear-gradient(180deg, #303030, #ffffff,#303030);-webkit-background-clip: text;color: transparent;
+                        font-size: 20px;
+                        padding: 10px 0px;
+                    }
+                </style>
+					<script type="text/javascript">
+                         var finaltime_{$vc_groupbuy['groupbuy_id']} = {$vc_groupbuy['groupbuy_endtime']};
+                         (function(){
+                            var interval = setInterval(function(){
+                                 var cn_miao_{$vc_groupbuy['groupbuy_id']}=parseInt(finaltime_{$vc_groupbuy['groupbuy_id']}-new Date().getTime()/1000);
+                                 if(cn_miao_{$vc_groupbuy['groupbuy_id']}<0){
+                                    $('#xsqg_{$vc_groupbuy['groupbuy_id']}').remove();
+                                 }
+                                 var day_{$vc_groupbuy['groupbuy_id']}    =parseInt(cn_miao_{$vc_groupbuy['groupbuy_id']}/86400);
+                                 var hour_{$vc_groupbuy['groupbuy_id']}   =parseInt((cn_miao_{$vc_groupbuy['groupbuy_id']}-day_{$vc_groupbuy['groupbuy_id']}*86400)/3600);
+                                 var minute_{$vc_groupbuy['groupbuy_id']} =parseInt((cn_miao_{$vc_groupbuy['groupbuy_id']}-day_{$vc_groupbuy['groupbuy_id']}*86400-hour_{$vc_groupbuy['groupbuy_id']}*3600)/60);
+                                 var second_{$vc_groupbuy['groupbuy_id']} =parseInt(cn_miao_{$vc_groupbuy['groupbuy_id']}-day_{$vc_groupbuy['groupbuy_id']}*86400-hour_{$vc_groupbuy['groupbuy_id']}*3600-minute_{$vc_groupbuy['groupbuy_id']}*60);
+
+                                hour_{$vc_groupbuy['groupbuy_id']}   =parseInt((cn_miao_{$vc_groupbuy['groupbuy_id']})/3600);
+                                if(hour_{$vc_groupbuy['groupbuy_id']}>99){
+                                    hour_{$vc_groupbuy['groupbuy_id']} =99;
+                                }
+
+
+                                 var html =
+                                    // ((day_{$vc_groupbuy['groupbuy_id']}<10)?'0'+day_{$vc_groupbuy['groupbuy_id']} : day_{$vc_groupbuy['groupbuy_id']})
+                                    // +':'+
+                                    ((hour_{$vc_groupbuy['groupbuy_id']}<10)?'0'+hour_{$vc_groupbuy['groupbuy_id']} : hour_{$vc_groupbuy['groupbuy_id']})
+                                    +':'+((minute_{$vc_groupbuy['groupbuy_id']}<10)?'0'+minute_{$vc_groupbuy['groupbuy_id']} : minute_{$vc_groupbuy['groupbuy_id']})
+                                    +':'+((second_{$vc_groupbuy['groupbuy_id']}<10)?'0'+second_{$vc_groupbuy['groupbuy_id']} : second_{$vc_groupbuy['groupbuy_id']});
+                                 var thishtml ='';   
+                                    (html.split('')).forEach(function(item){
+                                      thishtml=thishtml+'<span class="CountDown">'+item+'</span>';
+                                    })
+
+                                 $('#nowtime_{$vc_groupbuy['groupbuy_id']}').html(
+                                        thishtml
+                                    );
+
+                            }, 1000);
+                        })();
+                    </script>
+
+                    <div style="width: 100%;background-color: #111111;padding: 2px 12px;color: transparent;border-radius: 18px 18px 0 0;top: -40px;left: 0;">
+                        
+                        
+                    	<div style="background-color: red;transform:rotate(45deg);width: 100px;height: 126px;position: absolute;top: -22px;left: -66px;"></div>
+                    	<div style="background-color: yellow;width: 70px;height: 100px;position: absolute;right: 0;top: 0"></div>
+                    	<div style="background-color: #111111;;transform:rotate(45deg);width: 100px;height: 126px;position: absolute;top: -20px;right: 50px;"></div>
+                    	<div style="width: 60%;margin: 0 auto;border-left: 1px solid #000000;background-image: linear-gradient(180deg, #000000 0%, #303030 50%,#000000 100%) ;padding: 10px 0px;position: relative;">
+                            <div id="nowtime_{$vc_groupbuy['groupbuy_id']}">
+                                <div class="CountDown">0</div><div class="CountDown">0</div><div class="CountDown">：</div><div class="CountDown">0</div><div class="CountDown">0</div><div class="CountDown">：</div><div class="CountDown">0</div><div class="CountDown">0</div>
+                            </div>
+                        </div>
+                    </div>
