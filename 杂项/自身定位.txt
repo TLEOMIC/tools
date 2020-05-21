@@ -1,0 +1,62 @@
+<script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+<script type="text/javascript">
+	//需要线上网站
+   $.ajax({
+            type: "Get",  
+            url: "http://api.map.baidu.com/location/ip?ak=iM7PENGDtk3eI3nsxZttPCwkIF06L5sZ&ip=&coor=bd09ll",
+       		processData: false,
+       		dataType:'jsonp',
+            success: function(data){
+            	 console.log(data);
+            	
+            },
+            error : function(){
+            	 console.log('1');
+            }
+        	})
+</script>
+
+
+原网页:
+_______________________________________________________________________________________________
+解决办法1：
+ 
+var url='http://localhost:8080/WorkGroupManagment/open/getGroupById"
+       +"?id=1&callback=?';
+   $.ajax({
+     url:url,
+     dataType:'jsonp',
+     processData: false, 
+     type:'get',
+     success:function(data){
+       alert(data.name);
+     },
+     error:function(XMLHttpRequest, textStatus, errorThrown) {
+       alert(XMLHttpRequest.status);
+       alert(XMLHttpRequest.readyState);
+       alert(textStatus);
+     }});
+解决办法2：
+ 
+ 
+ 
+var url="http://localhost:8080/WorkGroupManagment/open/getGroupById"
+    +"?id=1&callback=?";
+$.jsonp({
+  "url": url,
+  "success": function(data) {
+    $("#current-group").text("当前工作组:"+data.result.name);
+  },
+  "error": function(d,msg) {
+    alert("Could not find user "+msg);
+  }
+});
+ 
+解决办法三：
+被请求页面加上下面代码，最好content填写域名
+ 
+<meta http-equiv="Access-Control-Allow-Origin" content="*">
+ 
+解决办法四，在请求控制器加上
+ 
+header("Access-Control-Allow-Origin: *");
