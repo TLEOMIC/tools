@@ -89,6 +89,7 @@
 	                break;
 	        }
 	    }
+	    var_dump($sql);
     }
     
     public function db($tablename)
