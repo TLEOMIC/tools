@@ -1,0 +1,28 @@
+<pre>
+版本 laravel 5.1
+
+alpay 放入app内
+composer.json依照
+"autoload-dev": {
+        "classmap": [
+            "tests/TestCase.php",
+            "app/alpay/sdk"
+        ]
+    },
+
+把
+"app/alpay/sdk"
+放入
+"classmap"
+中
+
+
+然后cmd
+composer dumpautoload
+
+路由
+Route::any("test","TestController@index");
+
+
+TestController 老规矩
+</pre>
